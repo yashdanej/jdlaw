@@ -1,6 +1,9 @@
 // Enhanced JavaScript for Advocate Jenish Danej Website
 document.addEventListener('DOMContentLoaded', function() {
     
+    // Add floating particles
+    createFloatingParticles();
+    
     // Header scroll effect
     const header = document.querySelector('.header');
     window.addEventListener('scroll', () => {
@@ -446,3 +449,72 @@ window.addEventListener('load', () => {
         }, 300);
     }
 });
+
+// Floating Particles Animation
+function createFloatingParticles() {
+    const hero = document.querySelector('.hero');
+    const featuredShorts = document.querySelector('.featured-shorts');
+    
+    if (hero) {
+        createParticlesForSection(hero, 15);
+    }
+    
+    if (featuredShorts) {
+        createParticlesForSection(featuredShorts, 10);
+    }
+}
+
+function createParticlesForSection(section, count) {
+    for (let i = 0; i < count; i++) {
+        const particle = document.createElement('div');
+        particle.className = 'floating-particle';
+        
+        // Random properties
+        const size = Math.random() * 8 + 4;
+        const duration = Math.random() * 20 + 15;
+        const delay = Math.random() * 5;
+        const opacity = Math.random() * 0.5 + 0.1;
+        
+        particle.style.cssText = `
+            position: absolute;
+            width: ${size}px;
+            height: ${size}px;
+            background: radial-gradient(circle, rgba(255,107,107,${opacity}), rgba(72,219,251,${opacity/2}));
+            border-radius: 50%;
+            left: ${Math.random() * 100}%;
+            top: ${Math.random() * 100}%;
+            animation: float ${duration}s infinite linear;
+            animation-delay: ${delay}s;
+            pointer-events: none;
+            z-index: 1;
+        `;
+        
+        section.appendChild(particle);
+    }
+}
+
+// Add CSS for floating particles
+const style = document.createElement('style');
+style.textContent = `
+    @keyframes float {
+        0% {
+            transform: translateY(0) rotate(0deg);
+            opacity: 0;
+        }
+        10% {
+            opacity: 1;
+        }
+        90% {
+            opacity: 1;
+        }
+        100% {
+            transform: translateY(-100vh) rotate(360deg);
+            opacity: 0;
+        }
+    }
+    
+    .floating-particle {
+        filter: blur(1px);
+    }
+`;
+document.head.appendChild(style);

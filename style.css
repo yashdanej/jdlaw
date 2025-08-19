@@ -10,6 +10,8 @@ html {
     /* Hide all scrollbars */
     scrollbar-width: none; /* Firefox */
     -ms-overflow-style: none; /* Internet Explorer 10+ */
+    width: 100%;
+    max-width: 100vw;
 }
 
 /* Hide scrollbar for WebKit browsers (Chrome, Safari, Edge) */
@@ -37,6 +39,7 @@ body {
     overflow-x: hidden;
     width: 100%;
     min-width: 320px;
+    max-width: 100vw;
     position: relative;
     /* Hide body scrollbars */
     scrollbar-width: none; /* Firefox */
@@ -48,14 +51,32 @@ body::-webkit-scrollbar {
     display: none;
 }
 
-/* Global Overflow Prevention */
-*, *::before, *::after {
-    box-sizing: border-box;
-    word-wrap: break-word;
-    overflow-wrap: break-word;
-    /* Hide scrollbars for all elements */
-    scrollbar-width: none; /* Firefox */
-    -ms-overflow-style: none; /* Internet Explorer 10+ */
+/* Global text styling for proper capitalization and hyphenation */
+h1, h2, h3 {
+    text-transform: capitalize;
+    letter-spacing: 0.5px;
+}
+
+h4, h5, h6 {
+    text-transform: capitalize;
+}
+
+.nav-brand h2 {
+    text-transform: uppercase !important;
+    letter-spacing: 1px !important;
+}
+
+/* Service titles and card headings */
+.service-card h3,
+.specialization-card h3,
+.news-card h4 {
+    text-transform: capitalize;
+}
+
+/* Button text */
+.btn {
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
 }
 
 /* Hide scrollbar for WebKit browsers (Chrome, Safari, Edge) on all elements */
@@ -79,7 +100,10 @@ img, video, iframe, embed, object {
 h1, h2, h3, h4, h5, h6, p, span, a, li {
     word-wrap: break-word;
     overflow-wrap: break-word;
-    hyphens: auto;
+    hyphens: none;
+    -webkit-hyphens: none;
+    -moz-hyphens: none;
+    -ms-hyphens: none;
 }
 
 /* Responsive form elements */
@@ -145,6 +169,7 @@ table {
     margin: 0 auto;
     padding: 0 20px;
     width: 100%;
+    max-width: calc(100vw - 40px);
     box-sizing: border-box;
 }
 
@@ -1156,24 +1181,33 @@ table {
 /* Social Content Section Styles */
 .social-content-section {
     margin-bottom: 30px;
+    width: 100%;
+    max-width: 100%;
 }
 
 .social-content-section h4 {
     color: var(--primary-brown);
-    font-size: 1.3rem;
+    font-size: clamp(1.1rem, 3vw, 1.3rem);
     margin-bottom: 20px;
     text-align: center;
     font-weight: 600;
+    text-transform: capitalize;
+    word-wrap: break-word;
+    hyphens: none;
 }
 
 .instagram-embeds {
     display: flex;
     justify-content: center;
     margin-bottom: 30px;
+    width: 100%;
+    max-width: 100%;
+    overflow: hidden;
 }
 
 .instagram-post {
     max-width: 400px;
+    width: 100%;
     margin: 0 auto;
     border-radius: 15px;
     overflow: hidden;
@@ -1189,22 +1223,30 @@ table {
 /* YouTube Section Styles */
 .youtube-section {
     margin-bottom: 30px;
+    width: 100%;
+    max-width: 100%;
 }
 
 .youtube-section h4 {
     color: var(--primary-brown);
-    font-size: 1.3rem;
+    font-size: clamp(1.1rem, 3vw, 1.3rem);
     margin-bottom: 20px;
     text-align: center;
     font-weight: 600;
+    text-transform: capitalize;
+    word-wrap: break-word;
+    hyphens: none;
 }
 
 .youtube-embeds {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     gap: 20px;
     margin-bottom: 25px;
     justify-content: center;
+    width: 100%;
+    max-width: 100%;
+    padding: 0 10px;
 }
 
 .youtube-video {
@@ -1215,6 +1257,7 @@ table {
     transition: all 0.3s ease;
     background: white;
     max-width: 350px;
+    width: 100%;
     margin: 0 auto;
 }
 
@@ -1939,6 +1982,7 @@ table {
 @media (min-width: 768px) and (max-width: 991px) {
     .container {
         padding: 0 20px;
+        max-width: calc(100vw - 40px);
     }
     
     .nav-menu {
@@ -1950,8 +1994,18 @@ table {
         padding: 0.6rem 1.2rem;
     }
     
+    .nav-brand h2 {
+        font-size: clamp(14px, 2.5vw, 18px);
+        text-align: center;
+        white-space: normal;
+        word-wrap: break-word;
+        line-height: 1.2;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+    }
+    
     .hero {
-        padding: 100px 0 60px;
+        padding: 120px 0 60px;
     }
     
     .hero-content {
@@ -1961,7 +2015,9 @@ table {
     }
     
     .hero-text h1 {
-        font-size: 2.5rem;
+        font-size: clamp(2rem, 5vw, 2.8rem);
+        text-transform: uppercase;
+        letter-spacing: 1px;
     }
     
     .hero-stats {
@@ -1994,9 +2050,52 @@ table {
         gap: 3rem;
     }
     
+    .awareness-visual {
+        width: 100%;
+        max-width: 100%;
+        padding: 0 10px;
+    }
+    
+    .social-content-section {
+        margin-bottom: 25px;
+        width: 100%;
+    }
+    
+    .instagram-embeds {
+        padding: 0 10px;
+        width: 100%;
+    }
+    
+    .instagram-post {
+        max-width: 450px;
+        width: 100%;
+    }
+    
     .topic-grid {
         grid-template-columns: repeat(2, 1fr);
         gap: 15px;
+    }
+    
+    .youtube-embeds {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+        padding: 0 10px;
+    }
+    
+    .youtube-video {
+        max-width: 100%;
+        width: 100%;
+    }
+    
+    .contact-content {
+        grid-template-columns: 1fr;
+        gap: 3rem;
+    }
+    
+    .contact-info {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
     }
     
     .youtube-embeds {
@@ -2016,7 +2115,6 @@ table {
     .contact-info {
         grid-template-columns: repeat(2, 1fr);
     }
-}
 
 /* Mobile Landscape (576px to 767px) */
 @media (min-width: 576px) and (max-width: 767px) {
@@ -2101,6 +2199,27 @@ table {
         gap: 2rem;
     }
     
+    .awareness-visual {
+        width: 100%;
+        max-width: 100%;
+        padding: 0 10px;
+    }
+    
+    .social-content-section {
+        margin-bottom: 20px;
+        width: 100%;
+    }
+    
+    .instagram-embeds {
+        padding: 0 10px;
+        width: 100%;
+    }
+    
+    .instagram-post {
+        max-width: 380px;
+        width: 100%;
+    }
+    
     .topic-grid {
         grid-template-columns: repeat(2, 1fr);
         gap: 15px;
@@ -2156,14 +2275,15 @@ table {
 /* Mobile Portrait (320px to 575px) */
 @media (max-width: 575px) {
     .container {
-        padding: 0 10px;
-        max-width: 100%;
+        padding: 0 15px;
+        max-width: calc(100vw - 30px);
         overflow-x: hidden;
     }
     
     body {
         overflow-x: hidden;
         width: 100%;
+        max-width: 100vw;
     }
 
     .nav-menu {
@@ -2171,64 +2291,81 @@ table {
     }
     
     .nav-brand h2 {
-        font-size: clamp(10px, 3.2vw, 14px);
+        font-size: clamp(12px, 3.5vw, 16px);
         text-align: center;
-        white-space: nowrap;
+        white-space: normal;
+        word-wrap: break-word;
+        line-height: 1.2;
         margin: 0;
+        padding: 0 5px;
+        max-width: 100%;
+        hyphens: none;
+        -webkit-hyphens: none;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
     }
     
     .navbar .container {
         justify-content: center;
+        padding: 0 10px;
+    }
+    
+    .header {
+        position: fixed;
+        top: 0;
+        width: 100%;
+        z-index: 1000;
+        background: linear-gradient(135deg, var(--ivory) 0%, var(--cream) 100%);
+        box-shadow: 0 2px 10px rgba(139, 69, 19, 0.15);
+    }
+    
+    .navbar {
+        padding: 0.8rem 0;
     }
     
     .hero {
-        padding: 120px 0 40px;
-    }
-    
-    .nav-brand h2 {
-        font-size: clamp(0.9rem, 4vw, 1.1rem);
-        text-align: left;
-        line-height: 1.2;
-        max-width: 70%;
-        word-wrap: break-word;
-        overflow-wrap: break-word;
-    }
-    
-    .hero {
-        padding: 70px 0 30px;
-        min-height: 85vh;
+        padding: 100px 0 40px;
+        min-height: 90vh;
         overflow-x: hidden;
     }
     
     .hero-content {
         grid-template-columns: 1fr;
-        gap: 1rem;
+        gap: 2rem;
         text-align: center;
         width: 100%;
         max-width: 100%;
+        padding: 0;
     }
     
     .hero-text h1 {
-        font-size: clamp(1.4rem, 6vw, 1.8rem);
-        line-height: 1.2;
-        margin-bottom: 0.8rem;
+        font-size: clamp(1.6rem, 6vw, 2.2rem);
+        line-height: 1.3;
+        margin-bottom: 1rem;
         word-wrap: break-word;
         overflow-wrap: break-word;
+        hyphens: none;
+        text-transform: uppercase;
+        letter-spacing: 1px;
     }
     
     .hero-subtitle {
-        font-size: clamp(0.9rem, 4vw, 1.1rem);
-        margin-bottom: 0.8rem;
+        font-size: clamp(1rem, 4vw, 1.3rem);
+        margin-bottom: 1rem;
         word-wrap: break-word;
         overflow-wrap: break-word;
+        hyphens: none;
+        text-transform: capitalize;
     }
     
     .hero-text p {
-        font-size: clamp(0.8rem, 3.5vw, 0.95rem);
-        line-height: 1.5;
-        margin-bottom: 1.2rem;
+        font-size: clamp(0.9rem, 3.5vw, 1.1rem);
+        line-height: 1.6;
+        margin-bottom: 1.5rem;
         word-wrap: break-word;
         overflow-wrap: break-word;
+        hyphens: none;
+        text-align: justify;
     }
     
     .hero-stats {
@@ -2239,17 +2376,22 @@ table {
     }
     
     .section-header h2 {
-        font-size: clamp(1.4rem, 5vw, 1.8rem);
+        font-size: clamp(1.6rem, 5vw, 2.2rem);
         text-align: center;
         word-wrap: break-word;
         overflow-wrap: break-word;
+        hyphens: none;
+        text-transform: capitalize;
+        line-height: 1.3;
     }
     
     .section-header p {
-        font-size: clamp(0.8rem, 3vw, 0.95rem);
+        font-size: clamp(0.9rem, 3vw, 1.1rem);
         text-align: center;
         word-wrap: break-word;
         overflow-wrap: break-word;
+        hyphens: none;
+        line-height: 1.5;
     }
     
     .about-content {
@@ -2272,19 +2414,34 @@ table {
     
     .specialization-grid {
         grid-template-columns: 1fr;
-        gap: 1.2rem;
+        gap: 1.5rem;
+        padding: 0 10px;
     }
     
     .specialization-card {
-        padding: 1.5rem 1rem;
+        padding: 2rem 1.5rem;
         margin: 0 auto;
         max-width: 100%;
+        width: 100%;
     }
     
     .specialization-card h3 {
-        font-size: clamp(1.1rem, 4vw, 1.3rem);
+        font-size: clamp(1.2rem, 4vw, 1.5rem);
         word-wrap: break-word;
         overflow-wrap: break-word;
+        hyphens: none;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        line-height: 1.2;
+    }
+    
+    .specialization-card p {
+        font-size: clamp(0.9rem, 3.5vw, 1.1rem);
+        word-wrap: break-word;
+        overflow-wrap: break-word;
+        hyphens: none;
+        line-height: 1.6;
+        text-align: justify;
     }
     
     .specialization-stats {
@@ -2294,23 +2451,72 @@ table {
     
     .services-grid {
         grid-template-columns: 1fr;
-        gap: 1.2rem;
+        gap: 1.5rem;
+        padding: 0 10px;
     }
     
     .service-card {
         max-width: 100%;
         margin: 0 auto;
+        width: 100%;
     }
     
     .service-card h3 {
-        font-size: clamp(1rem, 4vw, 1.2rem);
+        font-size: clamp(1.1rem, 4vw, 1.3rem);
         word-wrap: break-word;
         overflow-wrap: break-word;
+        hyphens: none;
+        text-transform: capitalize;
+        line-height: 1.3;
+    }
+    
+    .service-card p {
+        font-size: clamp(0.9rem, 3.5vw, 1.1rem);
+        word-wrap: break-word;
+        overflow-wrap: break-word;
+        hyphens: none;
+        line-height: 1.6;
+        text-align: justify;
     }
     
     .awareness-content {
         grid-template-columns: 1fr;
         gap: 1.5rem;
+        padding: 0 10px;
+    }
+    
+    .awareness-visual {
+        width: 100%;
+        max-width: 100%;
+        overflow: hidden;
+    }
+    
+    .social-content-section {
+        margin-bottom: 20px;
+        width: 100%;
+        max-width: 100%;
+        padding: 0;
+    }
+    
+    .social-content-section h4 {
+        font-size: clamp(1rem, 3.5vw, 1.2rem);
+        margin-bottom: 15px;
+        text-align: center;
+        word-wrap: break-word;
+        hyphens: none;
+    }
+    
+    .instagram-embeds {
+        padding: 0 5px;
+        width: 100%;
+        max-width: 100%;
+        overflow: hidden;
+    }
+    
+    .instagram-post {
+        max-width: 100%;
+        width: 100%;
+        margin: 0 auto;
     }
     
     .topic-grid {
@@ -2344,35 +2550,42 @@ table {
     
     .youtube-embeds {
         grid-template-columns: 1fr;
-        gap: 15px;
+        gap: 20px;
         justify-items: center;
-        padding: 0 10px;
+        padding: 0 15px;
     }
     
     .youtube-video {
-        max-width: 90%;
+        max-width: 100%;
         width: 100%;
     }
     
     .video-placeholder {
-        min-height: 300px;
+        min-height: 350px;
+        width: 100%;
     }
     
     .play-button {
-        padding: 6px 12px;
-        font-size: clamp(0.7rem, 3vw, 0.8rem);
+        padding: 8px 15px;
+        font-size: clamp(0.8rem, 3vw, 1rem);
+        border-radius: 25px;
     }
     
     .video-info h5 {
-        font-size: clamp(0.8rem, 3vw, 0.9rem);
+        font-size: clamp(0.9rem, 3vw, 1.1rem);
         word-wrap: break-word;
         overflow-wrap: break-word;
+        hyphens: none;
+        text-transform: capitalize;
+        line-height: 1.3;
     }
     
     .video-info p {
-        font-size: clamp(0.7rem, 2.5vw, 0.75rem);
+        font-size: clamp(0.8rem, 2.5vw, 0.9rem);
         word-wrap: break-word;
         overflow-wrap: break-word;
+        hyphens: none;
+        line-height: 1.4;
     }
     
     .awareness-stats {
@@ -2407,35 +2620,51 @@ table {
     
     .contact-content {
         grid-template-columns: 1fr;
-        gap: 1.5rem;
+        gap: 2rem;
     }
     
     .contact-info {
         grid-template-columns: 1fr;
-        gap: 0.8rem;
+        gap: 1rem;
     }
     
     .contact-card {
-        padding: 1.2rem;
+        padding: 1.5rem;
         text-align: center;
         max-width: 100%;
+        width: 100%;
     }
     
     .contact-card h4 {
-        font-size: clamp(1rem, 4vw, 1.2rem);
+        font-size: clamp(1.1rem, 4vw, 1.3rem);
         word-wrap: break-word;
         overflow-wrap: break-word;
+        hyphens: none;
+        text-transform: capitalize;
+        line-height: 1.3;
+    }
+    
+    .contact-card p {
+        font-size: clamp(0.9rem, 3vw, 1rem);
+        word-wrap: break-word;
+        overflow-wrap: break-word;
+        hyphens: none;
+        line-height: 1.5;
     }
     
     .contact-form-container {
-        padding: 1.5rem 1rem;
+        padding: 2rem 1.5rem;
         max-width: 100%;
+        width: 100%;
     }
     
     .contact-form-container h3 {
-        font-size: clamp(1.2rem, 4vw, 1.4rem);
+        font-size: clamp(1.3rem, 4vw, 1.6rem);
         word-wrap: break-word;
         overflow-wrap: break-word;
+        hyphens: none;
+        text-transform: capitalize;
+        line-height: 1.3;
     }
     
     .form-group {
@@ -2503,15 +2732,18 @@ table {
     
     /* Fix button and link wrapping */
     .btn, .btn-primary, .btn-outline {
-        font-size: clamp(0.8rem, 3vw, 0.9rem);
-        padding: 10px 16px;
+        font-size: clamp(0.9rem, 3vw, 1rem);
+        padding: 12px 20px;
         word-wrap: break-word;
         overflow-wrap: break-word;
         text-align: center;
-        white-space: nowrap;
-        overflow: hidden;
-        text-overflow: ellipsis;
+        white-space: normal;
         max-width: 100%;
+        border-radius: 8px;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        line-height: 1.2;
+        hyphens: none;
     }
     
     /* Fix image overflow */
@@ -2680,6 +2912,73 @@ table {
         page-break-inside: avoid;
     }
 }
+
+/* Critical Mobile Optimization */
+@media (max-width: 767px) {
+    /* Prevent horizontal scroll */
+    html, body {
+        overflow-x: hidden !important;
+        max-width: 100vw !important;
+        position: relative;
+    }
+    
+    /* Ensure all containers respect viewport */
+    .container, section, div, .hero-content, .about-content, .services-grid, .specialization-grid {
+        max-width: 100vw !important;
+        overflow-x: hidden !important;
+        box-sizing: border-box !important;
+    }
+    
+    /* Fix text breaking and hyphenation */
+    * {
+        word-wrap: break-word !important;
+        overflow-wrap: break-word !important;
+        hyphens: none !important;
+        -webkit-hyphens: none !important;
+        -moz-hyphens: none !important;
+        -ms-hyphens: none !important;
+    }
+    
+    /* Ensure proper text capitalization */
+    h1, h2, h3 {
+        text-transform: capitalize !important;
+        letter-spacing: 0.5px !important;
+    }
+    
+    h4, h5, h6 {
+        text-transform: capitalize !important;
+    }
+    
+    .nav-brand h2 {
+        text-transform: uppercase !important;
+        letter-spacing: 1px !important;
+    }
+    
+    /* Button improvements */
+    .btn {
+        white-space: normal !important;
+        text-transform: uppercase !important;
+        letter-spacing: 0.5px !important;
+        line-height: 1.3 !important;
+        padding: 12px 20px !important;
+    }
+    
+    /* Image responsiveness */
+    img, video, iframe {
+        max-width: 100% !important;
+        height: auto !important;
+        object-fit: cover !important;
+    }
+    
+    /* Grid adjustments */
+    .youtube-embeds,
+    .services-grid,
+    .specialization-grid,
+    .contact-info {
+        grid-template-columns: 1fr !important;
+        gap: 1rem !important;
+    }
+}
     
     .about-text h2 {
         font-size: 2rem;
@@ -2693,4 +2992,3 @@ table {
     .achievements {
         padding: 60px 0;
     }
-}
